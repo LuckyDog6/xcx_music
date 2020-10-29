@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/find/find",
+    "pages/my/my"
+  ],
+  "window":{
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#DC143C",
+    "navigationBarTitleText": "LuckyMusic",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#DC143C",
+    "backgroundColor": "#fafafa",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/homeed.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "images/icons/find.png",
+        "selectedIconPath": "images/icons/finded.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/icons/my.png",
+        "selectedIconPath": "images/icons/myed.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-search": "@vant/weapp/search/index"
+  }
+}

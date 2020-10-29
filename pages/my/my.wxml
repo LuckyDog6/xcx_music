@@ -1,0 +1,18 @@
+<view wx:for="{{mvlist}}" wx:key="id">
+<view class="video">
+<video id="myVideo" src="{{item.src}}" controls poster="{{item.cover}}"></video>
+
+<view class="item">
+<text class="left">{{item.name}}</text>
+<view class="right"><image src="{{item.cover}}"></image></view>
+</view>
+</view>
+<view class="item2">
+<view class="artist"><image src="{{item.artistSrc}}"></image><text class="">{{item.artistName}}</text></view>
+<view class="play">
+<view><image src="/images/play/play.png"></image></view>
+<view class="count">{{item.playCount}}</view>
+</view>
+</view>
+
+</view>

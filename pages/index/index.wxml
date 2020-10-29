@@ -1,0 +1,35 @@
+<van-search value="{{value}}" shape="round" background="#DC143C" placeholder="请输入搜索歌名" />
+<view class="index_swiper">
+  <swiper indicator-dots autoplay interval="2000" circular>
+    <swiper-item wx:for="{{swiperList}}" wx:key="id">
+      <image class="image" src="{{item.src}}" mode="widthFix"></image>
+    </swiper-item>
+  </swiper>
+</view>
+<view class="index">
+  <navigator wx:for="{{classlist}}" wx:key="id" url="{{item.url}}">
+    <view class="index2">
+      <view class="image"><image src="{{item.path}}"></image></view>
+      <view class="text2"><text>{{item.text}}</text></view>
+    </view>
+  </navigator>
+</view>
+<view class="title"><text>懂你的精彩专辑</text></view>
+<view class="index">
+  <navigator wx:for="{{albums}}" wx:key="id" url="{{}}">
+    <view class="singer">
+      <view class="image1">
+      <image src="{{item.album.picUrl}}"></image>
+      </view>
+      <view class="text"><text>{{item.album.artist.name}}</text></view>
+      <view class="text"><text>{{item.album.name}}</text></view>
+    </view>
+  </navigator>
+</view>
+<view class="title"><text>欧美音乐精选</text></view>
+<view>
+<view wx:for="{{playList}}" wx:key="id" class="playlist">
+<audio poster="{{item.al.picUrl}}" name="{{item.al.name}}" author="{{item.ar[0].name}}" src="{{item.src}}" id="myAudio" controls loop></audio>
+</view>
+
+</view>

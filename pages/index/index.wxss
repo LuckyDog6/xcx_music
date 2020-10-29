@@ -1,0 +1,57 @@
+.index_swiper swiper {
+    width: 750rpx;
+    height: 300rpx;
+  }
+ .index_swiper swiper image {
+    width: 100%;
+  }
+.index{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.index2 {
+  display: flex;
+  flex-direction: column;
+  width: 60px;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.image{
+  width: 110rpx;
+  height: 110rpx;
+  background-color: #DC143C;
+  border-radius:40px;
+}
+.index image{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 15rpx
+}
+.singer image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx
+}
+.text{
+  margin:0 20rpx;
+  width: 200rpx;
+  font-size: 10px;
+  text-align: center
+}
+.text2{
+  font-size: 12px;
+}
+
+.title{
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  font-weight: bold
+}
+#myAudio{
+  display: flex;
+  flex-direction: column;
+  width: 750rpx;
+}
