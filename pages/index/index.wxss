@@ -1,3 +1,7 @@
+.container{
+  background-color: rgb(236, 232, 240)
+}
+
 .index_swiper swiper {
     width: 750rpx;
     height: 300rpx;
@@ -30,6 +34,10 @@
   height: 80rpx;
   margin: 15rpx
 }
+.singer{
+  background-color: rgb(255, 255, 255);
+  height: 360rpx
+}
 .singer image{
   width: 200rpx;
   height: 200rpx;
@@ -54,4 +62,102 @@
   display: flex;
   flex-direction: column;
   width: 750rpx;
+}
+.card{
+  width: 750rpx;
+  height: 200rpx;
+  margin: 20rpx 0rpx;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20rpx
+}
+.card1{
+  display: flex;
+  flex-direction: row
+}
+.card1 image{
+  margin-left: 20rpx
+}
+.card text{
+  color: red;
+  font-weight: bold;
+  font-size: 15px
+}
+.card image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx
+}
+.newSong{
+  display: flex;
+  flex-direction: row;
+}
+.sname{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  margin-top: 20rpx;
+  margin-left: 20rpx
+}
+.itname{
+  margin-bottom: 20rpx;
+  font-weight: bold
+}
+.artname{
+  color: rgb(203, 200, 206)
+}
+.newSong image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 20rpx;
+  border-radius: 20rpx
+}
+.ktv{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx
+}
+.ktv image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx
+}
+.ktv text{
+  font-weight: bold
+}
+
+.ktvlist{
+  display: flex;
+  flex-direction: row;
+}
+.ktvl{
+  display: flex;
+  flex-direction: column;
+  width: 150rpx
+}
+.ktvlist image{
+  width: 150rpx;
+  height: 150rpx
+}
+.ufoindex{
+  display: flex;
+  flex-direction: row;
+  margin: 10rpx 10rpx;
+  border-radius: 20rpx
+}
+.ufo{
+  width: 350rpx;
+  height: 350rpx;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20rpx;
+  margin: 10rpx 10rpx
+}
+.ufo image{
+  width: 350rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+}
+.ufo text{
+  font-size: 12px;
+  font-weight: bolder
 }

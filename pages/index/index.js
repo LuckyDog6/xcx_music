@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    value:'',
     albums:[],
     swiperList:[
       {
@@ -74,7 +75,10 @@ Page({
       "url": ""
     },
     ],
-    playList:[]
+    playList:[],
+    newSonglist:[],
+    ktvList:[],
+    ufolist:[]
   },
 
   /**
@@ -85,6 +89,9 @@ Page({
     this.audioCtx = wx.createAudioContext('myAudio')
     this.getSongList()
     this.getPlaylist()
+    this.getNewsong()
+    this.getKtvlist()
+    this.getUfolist()
   },
   
   async getSongList(){
@@ -104,14 +111,16 @@ Page({
     this.setData({
       albums:albums1
     })
+    console.log(this.data.albums)
   },
   async getPlaylist(){
     var data = await request({
       url: "/playlist/detail?id=6186912"
     });
     var list=data.playlist.tracks
+    var num = Math.floor(Math.random() * (list.length-2))
     this.setData({
-      playList:list.slice(0,5)
+      playList:list.slice(num,num+3)
     })
     for(var i=0;i<this.data.playList.length;i++){
       var data = await request({
@@ -125,11 +134,33 @@ Page({
     this.setData({
       playList:this.data.playList
     })
-    console.log(this.data.playList)
+    // console.log(this.data.playList)
   },
   audioPlay:function(options){
     console.log("点击了")
     this.audioCtx.play()
+  },
+  async getNewsong(){
+    var data = await request({ url:'/personalized/newsong'})
+    var num= Math.floor(Math.random() *(data.result.length))
+    this.setData({
+      newSonglist:data.result.slice(num,num+1)
+    })
+  },
+  async getKtvlist(){
+    var data = await request({ url:'/personalized/djprogram'})
+    var num = Math.floor(Math.random() * (data.result.length-2))
+    this.setData({
+      ktvList:data.result.slice(num,num+3)
+    })
+    console.log(data.result)
+  },
+  async getUfolist(){
+    var data = await request({ url: '/personalized/privatecontent/list' })
+    var num = Math.floor(Math.random() * (data.result.length-1))
+    this.setData({
+      ufolist: data.result.slice(num,num+2)
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
