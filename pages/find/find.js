@@ -76,10 +76,9 @@ Page({
     });
     this.setData({
       Lplaylist:data.result.slice(0,15),
-      Rplaylist:data.result.slice(15),
-
+      Rplaylist: data.result.slice(15),
     })
-    console.log(data.result)
+    console.log(data)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,57 +1,61 @@
-page {
-  background-color: #dedede;
-  padding: 20rpx;
-}
-.search_row {
-  height: 60rpx;
-  display: flex;
-}
-.search_row input {
-  background-color: #fff;
-  flex: 1;
-  height: 100%;
-  padding-left: 30rpx;
-}
-.search_row button {
-  width: 110rpx;
-  height: 100%;
-  padding: 0;
-  margin: 0 10rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 26rpx;
-}
-.search_content {
-  margin-top: 30rpx;
- 
-}
-.search_content .search_item {
-  background-color: #fff;
-  font-size: 30rpx;
-  /* padding: 15rpx 10rpx; */
-  border-bottom: 1rpx solid #ccc;
-  /* overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; */
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center
-}
-.art{
-  margin-bottom: 30rpx;
-  margin-left: 20rpx
-}
-.it{
-  margin-left: 20rpx
-}
-.name{
-  margin-left: 20rpx
-}
 .container {
   background-color: rgb(236, 232, 240);
 }
+
+.desc {
+  background-color: rgba(23, 109, 80, 0.205);
+  height: 350rpx;
+  width: 100%;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+.desc image {
+  width: 40%;
+  /* width: 200rpx; */
+  height: 300rpx;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}
+
+.right {
+  width: 60%;
+}
+
+.title {
+  margin: 20rpx 0rpx;
+  color: rgb(250, 250, 250);
+}
+
+.author {
+  display: flex;
+  flex-direction: row;
+}
+
+.author image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 100rpx;
+}
+
+.author text {
+  color: rgba(245, 238, 238, 0.637);
+  margin: 15rpx 10rpx;
+  font-size: 13px;
+}
+
+.it {
+  margin-left: 10rpx;
+}
+
+.descd text {
+  font-size: 11px;
+  color: rgba(245, 238, 238, 0.637);
+  margin: 20rpx 0;
+}
+
 .songlist {
   background-color: rgb(250, 250, 250);
   width: 100%;

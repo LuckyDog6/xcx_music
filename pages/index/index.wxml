@@ -1,6 +1,6 @@
 <!-- 搜索框 开始 -->
-  <SearchInput></SearchInput>
-  <!-- 搜索框 结束 -->
+<SearchInput></SearchInput>
+<!-- 搜索框 结束 -->
 <view class="index_swiper">
   <swiper indicator-dots autoplay interval="2000" circular>
     <swiper-item wx:for="{{swiperList}}" wx:key="id">
@@ -52,13 +52,15 @@
       <image src="/images/play/card.png"></image>
       <text>音乐推荐</text>
     </view>
-    <view class="newSong" wx:for="{{newSonglist}}" wx:key="id">
-      <view class="sname">
-        <view class="itname">{{item.name}}</view>
-        <view class="artname">{{item.song.artists[0].name}}</view>
-      </view>
-      <image src="{{item.picUrl}}"></image>
-    </view>
+    <!-- <view class="newSong" wx:for="{{newSonglist}}" wx:key="id"> -->
+      <navigator class="newSong" wx:for="{{newSonglist}}" wx:key="id" url="/pages/recommend/recommend?id={{item.id}}">
+        <view class="sname">
+          <view class="itname">{{item.name}}</view>
+          <view class="artname">{{item.song.artists[0].name}}</view>
+        </view>
+        <image src="{{item.picUrl}}"></image>
+      </navigator>
+    <!-- </view> -->
   </view>
   <view class="ktv">
     <image src="/images/play/ktv.png"></image>

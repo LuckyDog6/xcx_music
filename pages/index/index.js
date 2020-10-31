@@ -141,7 +141,7 @@ Page({
     this.audioCtx.play()
   },
   async getNewsong(){
-    var data = await request({ url:'/personalized/newsong'})
+    var data = await request({ url:'/personalized/newsong?limit=100'})
     var num= Math.floor(Math.random() *(data.result.length))
     this.setData({
       newSonglist:data.result.slice(num,num+1)

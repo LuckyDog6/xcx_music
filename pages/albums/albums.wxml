@@ -31,7 +31,7 @@
       </view>
       <view class="bof">
       <text></text>
-        <image src="{{index===index1 ? '/images/play/bof.png':'/images/play/bofang.png'}}" bindtap="clickplay"></image>
+        <image src="{{index===index1 ? '/images/play/laba.png':'/images/play/bofang.png'}}"></image>
       </view>
     </view>
   </view>

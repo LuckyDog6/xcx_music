@@ -3,25 +3,23 @@ import {
 } from "../../request/index.js";
 // 小程序不支持ES7语法async 需要引入外部文件
 import regeneratorRuntime from '../../lib/runtime/runtime';
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    songlist:[],
-    album:'',
+    album:{},
     desc:'',
-    artImg:'',
-    index1:0,
-    poster:'',
-    name:'',
-    author:'',
-    src:'',
-    duration:0,
-    currentTime:0,
-    play:false
+    songlist:[],
+    index1: 0,
+    poster: '',
+    name: '',
+    author: '',
+    src: '',
+    duration: 0,
+    currentTime: 0,
+    play: false
   },
 
   /**
@@ -30,29 +28,42 @@ Page({
   onLoad: function (options) {
     var id = options.id || "";
     this.getsonglist(id)
-    // console.log(id)
-    
-    
   },
   async getsonglist(id){
     var data = await request({
-      url: "/album?id="+id
+      url: "/playlist/detail?id="+id
     });
-    for (var i = 0; i < data.songs.length; i++) {
-      var data2 = await request({
-        url: "/song/url?id=" + data.songs[i].id
-      });
-      data.songs[i].src = data2.data[0].url
-    }
-    var data3 = await request({
-      url: "/artist/desc?id=" + data.album.artist.id
-    });
-    var img = data3.topicData[0].rectanglePicUrl
+    this.data.album.blurPicUrl = data.playlist.creator.backgroundUrl
+    this.data.album.name = data.playlist.creator.name
+    this.data.album.subType = data.playlist.creator.signature
+    this.data.album.artist = data.playlist.creator.nickname
     this.setData({
-      songlist:data.songs,
-      album:data.album,
-      desc: data.album.description.slice(0,50),
-      artImg:img
+      album: this.data.album,
+      desc: data.playlist.description,
+      artImg: data.playlist.creator.avatarUrl
+    })
+    var list = data.playlist.trackIds
+    
+    var num = Math.floor(Math.random() * (list.length-11))
+    list=list.slice(num,num+10)
+    var songlist=[]
+    for(var i=0;i<list.length;i++){
+      var data2 = await request({
+        url: "/song/detail?ids="+list[i].id
+      });
+      songlist.push(data2.songs[0])
+      this.setData({
+        songlist:songlist
+      })
+    }
+    for (var i = 0; i < this.data.songlist.length; i++) {
+      var data2 = await request({
+        url: "/song/url?id=" + this.data.songlist[i].id
+      });
+      this.data.songlist[i].src = data2.data[0].url
+    }
+    this.setData({
+      songlist:this.data.songlist
     })
     this.setData({
       poster: this.data.songlist[0].al.picUrl,
@@ -62,7 +73,7 @@ Page({
     })
     console.log(this.data.songlist)
   },
-  play(e){
+  play(e) {
     this.setData({
       index1: e.currentTarget.dataset.index
     })
@@ -81,7 +92,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.audioCtx=wx.createAudioContext('myAudio')
+    this.audioCtx = wx.createAudioContext('myAudio')
   },
   bindtimeupdate(res) {
     this.setData({
@@ -90,7 +101,7 @@ Page({
     })
     // console.log('bindtimeupdate', parseInt(res.detail.currentTime), '时间总时长-->', parseInt(res.detail.duration));
   },
-  change(e){
+  change(e) {
     this.audioCtx.pause()
     this.audioCtx.seek(e.detail.value)
     this.setData({
@@ -98,36 +109,34 @@ Page({
     })
     this.audioCtx.play()
   },
-  audioplay(){
+  audioplay() {
     this.setData({
-      play:true
+      play: true
     })
   },
-  audiopause(){
+  audiopause() {
     this.setData({
-      play:false
+      play: false
     })
   },
-  clickplay(){
-    console.log("点击了")
-    console.log(this.data.play)
-    if(this.data.play){
+  clickplay() {
+    if (this.data.play) {
       this.audioCtx.pause()
-    }else{
+    } else {
       this.audioCtx.play()
     }
   },
-  previous(){
-    if(this.data.index1===0){
+  previous() {
+    if (this.data.index1 === 0) {
       this.setData({
-        index1:this.data.songlist.length-1
+        index1: this.data.songlist.length - 1
       })
-    }else{
+    } else {
       this.setData({
         index1: this.data.index1 - 1
       })
     }
-    
+
     this.setData({
       poster: this.data.songlist[this.data.index1].al.picUrl,
       name: this.data.songlist[this.data.index1].name,
@@ -136,8 +145,8 @@ Page({
     })
     this.audioCtx.play()
   },
-  next(){
-    if (this.data.index1 === this.data.songlist.length-1) {
+  next() {
+    if (this.data.index1 === this.data.songlist.length - 1) {
       this.setData({
         index1: 0
       })
@@ -158,7 +167,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**

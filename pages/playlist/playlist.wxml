@@ -1,17 +1,22 @@
-<view class="search_row">
-  <input value="{{inpValue}}" placeholder="请输入您要搜索的关键字" bindinput="handleInput"> </input>
-  <button bindtap="handleCancel" hidden="{{!isFocus}}">取消</button>
-</view>
-<!-- <view class="search_content"> -->
-<!-- <navigator url="/pages/play/play?id={{item.id}}" class="search_item" wx:for="{{songlist}}" wx:key="id">
-    <text class="name">{{item.name}}</text>
-    <text class="it">——</text>
-    <text wx:for="{{item.artists}}" wx:key="id" class="art">
-    {{item.name}}
-    </text>
-  </navigator> -->
-<!-- </view>  -->
 <view class="container">
+  <view class="desc">
+    <image src="{{album.blurPicUrl}}"></image>
+    <view class="right">
+      <view class="title">
+        <text class="">{{album.name}}:  </text>
+        <text class="">{{album.subType}}</text>
+      </view>
+      <view class="author">
+        <image src="{{artImg}}"></image>
+        <text>{{album.artist}}</text>
+        <text class="it">></text>
+      </view>
+      <view class="descd">
+        <text>{{desc}}...</text>
+        <text class="it2">></text>
+      </view>
+    </view>
+  </view>
   <view class="songlist">
     <view class="list" wx:for="{{songlist}}" wx:key="id" data-index="{{index}}" bindtap="play">
       <view class="index">
@@ -21,15 +26,11 @@
         <text class="songname">{{item.name}}</text>
         <view class="aut">
           <text class="dujia">独家</text>
-          <text wx:for="{{item.artists}}" wx:key="id" class="au">
-          {{item.name}}
-          </text>
-          <text class="au1">-</text>
-          <text class="au1">{{item.album.name}}</text>
-          <!-- <text class="au">{{item.ar[0].name}}-{{item.al.name}}</text> -->
+          <text class="au">{{item.ar[0].name}}-{{item.al.name}}</text>
         </view>
       </view>
       <view class="bof">
+        <text></text>
         <image src="{{index===index1 ? '/images/play/laba.png':'/images/play/bofang.png'}}"></image>
       </view>
     </view>
@@ -45,4 +46,4 @@
     </view>
 
   </audio>
-  </view>
+</view>

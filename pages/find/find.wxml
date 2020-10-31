@@ -1,6 +1,6 @@
 <view class="title">
 <view class="tleft">
-<text class="text1">发现好看的视频 ></text>
+<text class="text1">发现好听的歌单 ></text>
 <text class="text2">em...,原来你也在这里呀...,好久不见！</text>
 </view>
 <view class="tright">
@@ -11,7 +11,7 @@
 </view>
 <view class="show-info">
 <view class="left">
-  <navigator wx:for="{{Lplaylist}}" wx:key="id" url="{{}}">
+  <navigator wx:for="{{Lplaylist}}" wx:key="id" url="/pages/playlist/playlist?id={{item.id}}">
     <view class="images">
       <view class="">
       <image src="{{item.picUrl}}" mode="widthFix"></image>

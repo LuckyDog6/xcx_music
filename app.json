@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/find/find",
     "pages/my/my",
-    "pages/albums/albums"
+    "pages/albums/albums",
+    "pages/playlist/playlist",
+    "pages/play/play",
+    "pages/recommend/recommend"
   ],
   "window":{
     "backgroundColor": "#F6F6F6",
