@@ -4,7 +4,7 @@
 <view class="index_swiper">
   <swiper indicator-dots autoplay interval="2000" circular>
     <swiper-item wx:for="{{swiperList}}" wx:key="id">
-      <image src="{{item.src}}" mode="widthFix"></image>
+      <image src="{{item.pic}}" mode="widthFix"></image>
     </swiper-item>
   </swiper>
 </view>
@@ -64,10 +64,10 @@
   </view>
   <view class="ktv">
     <image src="/images/play/ktv.png"></image>
-    <text>云村KTV</text>
+    <text>新专辑发布</text>
   </view>
   <view class="index">
-    <navigator wx:for="{{ktvList}}" wx:key="id" url="{{}}">
+    <navigator wx:for="{{ktvList}}" wx:key="id" url="/pages/albums/albums?id={{item.id}}">
       <view class="singer">
         <view class="image1">
           <image src="{{item.picUrl}}"></image>

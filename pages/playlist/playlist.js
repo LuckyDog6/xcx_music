@@ -35,11 +35,11 @@ Page({
     });
     this.data.album.blurPicUrl = data.playlist.creator.backgroundUrl
     this.data.album.name = data.playlist.creator.name
-    this.data.album.subType = data.playlist.creator.signature
+    this.data.album.subType = data.playlist.creator.signature.slice(0,20)
     this.data.album.artist = data.playlist.creator.nickname
     this.setData({
       album: this.data.album,
-      desc: data.playlist.description,
+      desc: data.playlist.description.slice(0,25),
       artImg: data.playlist.creator.avatarUrl
     })
     var list = data.playlist.trackIds
@@ -71,7 +71,6 @@ Page({
       author: this.data.songlist[0].ar[0].name,
       src: this.data.songlist[0].src
     })
-    console.log(this.data.songlist)
   },
   play(e) {
     this.setData({

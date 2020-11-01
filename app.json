@@ -6,7 +6,12 @@
     "pages/albums/albums",
     "pages/playlist/playlist",
     "pages/play/play",
-    "pages/recommend/recommend"
+    "pages/recommend/recommend",
+    "pages/singers/singers",
+    "pages/singerSongs/singerSongs",
+    "pages/tags/tags",
+    "pages/tops/tops",
+    "pages/djprogram/djprogram"
   ],
   "window":{
     "backgroundColor": "#F6F6F6",

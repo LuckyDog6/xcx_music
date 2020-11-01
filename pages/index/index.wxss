@@ -4,7 +4,7 @@
 
 .index_swiper swiper {
     width: 750rpx;
-    height: 300rpx;
+    height: 280rpx;
   }
  .index_swiper swiper image {
     width: 100%;

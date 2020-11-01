@@ -1,27 +1,27 @@
-import {
-  request
-} from "../../request/index.js";
-// 小程序不支持ES7语法async 需要引入外部文件
+import { request } from "../../request/index.js";
 import regeneratorRuntime from '../../lib/runtime/runtime';
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    songlist:[],
-    album:'',
-    desc:'',
-    artImg:'',
-    index1:0,
-    poster:'',
-    name:'',
-    author:'',
-    src:'',
-    duration:0,
-    currentTime:0,
-    play:false
+    id:'',
+    songlist: [],
+    singername:'',
+    desc: '',
+    artImg: '',
+    index1: 0,
+    poster: '',
+    name: '',
+    author: '',
+    src: '',
+    duration: 0,
+    currentTime: 0,
+    play: false,
+    limit:10,
+    offset:0,
+    total:''
   },
 
   /**
@@ -29,35 +29,50 @@ Page({
    */
   onLoad: function (options) {
     var id = options.id || "";
+    var singername = options.name || "";
+    this.setData({
+      singername,
+      id
+    })
+    this.getsinger(id)
     this.getsonglist(id)
-    // console.log(id)
-    
-    
+  },
+  async getsinger(id){
+    const res = await request({ url:'/artist/desc?id='+id})
+
+    this.setData({
+      desc: res.briefDesc.slice(0, 70)
+    })
+    if (res.topicData!==null){
+      this.setData({
+        artImg: res.topicData[0].coverUrl
+      })
+    }else{
+      this.setData({
+        artImg: "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg"
+      })
+    }
   },
   async getsonglist(id){
-    var data = await request({
-      url: "/album?id="+id
-    });
+    const data = await request({ url: "/artist/songs?id=" + id+'&limit='+this.data.limit+'&offset='+this.data.offset});
+    this.setData({
+      total:data.total
+    })
     for (var i = 0; i < data.songs.length; i++) {
       var data2 = await request({
         url: "/song/url?id=" + data.songs[i].id
       });
       data.songs[i].src = data2.data[0].url
     }
-    var data3 = await request({
-      url: "/artist/desc?id=" + data.album.artist.id
-    });
-    var img = ''
-    if (data3.topicData!=null){
-      img = data3.topicData[0].rectanglePicUrl
-    }else{
-      img ='https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg'
+   
+    for (var i = 0; i < data.songs.length; i++) {
+      var data3 = await request({
+        url: "/song/detail?ids=" + data.songs[i].id
+      });
+      data.songs[i].al.picUrl = data3.songs[0].al.picUrl
     }
     this.setData({
-      songlist:data.songs,
-      album:data.album,
-      desc: data.album.description.slice(0,50),
-      artImg:img
+      songlist: [...this.data.songlist, ...data.songs]
     })
     this.setData({
       poster: this.data.songlist[0].al.picUrl,
@@ -66,7 +81,7 @@ Page({
       src: this.data.songlist[0].src
     })
   },
-  play(e){
+  play(e) {
     this.setData({
       index1: e.currentTarget.dataset.index
     })
@@ -77,15 +92,12 @@ Page({
       src: this.data.songlist[this.data.index1].src
     })
     this.audioCtx.play()
-    // this.setData({
-    //   play:true
-    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.audioCtx=wx.createAudioContext('myAudio')
+    this.audioCtx = wx.createAudioContext('myAudio')
   },
   bindtimeupdate(res) {
     this.setData({
@@ -94,7 +106,7 @@ Page({
     })
     // console.log('bindtimeupdate', parseInt(res.detail.currentTime), '时间总时长-->', parseInt(res.detail.duration));
   },
-  change(e){
+  change(e) {
     this.audioCtx.pause()
     this.audioCtx.seek(e.detail.value)
     this.setData({
@@ -102,34 +114,34 @@ Page({
     })
     this.audioCtx.play()
   },
-  audioplay(){
+  audioplay() {
     this.setData({
-      play:true
+      play: true
     })
   },
-  audiopause(){
+  audiopause() {
     this.setData({
-      play:false
+      play: false
     })
   },
-  clickplay(){
-    if(this.data.play){
+  clickplay() {
+    if (this.data.play) {
       this.audioCtx.pause()
-    }else{
+    } else {
       this.audioCtx.play()
     }
   },
-  previous(){
-    if(this.data.index1===0){
+  previous() {
+    if (this.data.index1 === 0) {
       this.setData({
-        index1:this.data.songlist.length-1
+        index1: this.data.songlist.length - 1
       })
-    }else{
+    } else {
       this.setData({
         index1: this.data.index1 - 1
       })
     }
-    
+
     this.setData({
       poster: this.data.songlist[this.data.index1].al.picUrl,
       name: this.data.songlist[this.data.index1].name,
@@ -138,8 +150,8 @@ Page({
     })
     this.audioCtx.play()
   },
-  next(){
-    if (this.data.index1 === this.data.songlist.length-1) {
+  next() {
+    if (this.data.index1 === this.data.songlist.length - 1) {
       this.setData({
         index1: 0
       })
@@ -160,7 +172,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
@@ -188,7 +200,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if(this.data.songlist.length>this.data.total){
+      wx.showToast({ title: '没有下一页数据' });
+    }else{
+      this.setData({
+        offset: this.data.offset + 10
+      })
+      this.getsonglist(this.data.id);
+    }
+    
   },
 
   /**
