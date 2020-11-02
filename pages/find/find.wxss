@@ -76,3 +76,18 @@
   background-color: aliceblue;
   margin-bottom: 10rpx;
 }
+.count{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center
+}
+.count image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right:20rpx;
+  margin-left: 200rpx
+}
+.count text{
+  font-size: 11px
+}

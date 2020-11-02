@@ -1,0 +1,116 @@
+
+.top{
+ background-color:#DC143C;
+ z-index: 1
+}
+.video {
+  display: flex;
+  flex-direction: column;
+  background-color: #DC143C;
+  z-index: 1;
+}
+
+.video video {
+  border-radius: 10rpx;
+  height: 340rpx;
+  width: 600rpx;
+  margin: 10rpx 75rpx;
+}
+
+.list {
+  margin-top: 600rpx;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  width: 600rpx;
+  margin: 0 75rpx;
+}
+
+.left {
+  width: 70%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.right {
+  margin-left: 80rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background-color: black;
+  border-radius: 100rpx;
+  display: flex;
+}
+
+.right image {
+  height: 50rpx;
+  width: 50rpx;
+  border-radius: 100rpx;
+  display: table-cell;
+  margin: 15rpx;
+}
+
+.item2 {
+  border-top: 2rpx solid rgb(151, 148, 145);
+  width: 600rpx;
+  margin: 10rpx 75rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.item2 image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100rpx;
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.artist {
+  display: flex;
+  flex-direction: row;
+}
+
+.artist text {
+  font-size: 12px;
+  margin: 35rpx 20rpx;
+  font-weight: bold;
+}
+
+.play {
+  display: flex;
+  flex-direction: row;
+  margin-left: 200rpx;
+}
+
+.play image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 30rpx;
+}
+
+.count {
+  margin: 40rpx 10rpx;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ite {
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx 0;
+  margin-left: 20rpx;
+}
+
+.iii {
+  height: 120rpx;
+  width: 240rpx;
+}
+
+.ite text {
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 20rpx;
+}

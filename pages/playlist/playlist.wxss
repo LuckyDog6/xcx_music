@@ -142,9 +142,9 @@ slider{
   flex-direction: row
 }
 .lrb{
-  z-index: 1;
+  z-index: 999;
   margin-left: 500rpx;
-  position: fixed ;
+  position: absolute ;
   left: 0;
   bottom: 0;
 }

@@ -17,29 +17,29 @@ Page({
     classlist: [{
         "id": 1,
         "path": "/images/index/1.png",
-        "text": "榜单",
+        "text": "榜单热单",
         "url": "/pages/tops/tops"
       },
 
       {
         "id": 2,
         "path": "/images/index/2.png",
-        "text": "歌手",
-        "url": "/pages/singers/singers"
+        "text": "歌手热曲",
+        "url": "/pages/my/my"
       },
 
       {
         "id": 3,
         "path": "/images/index/3.png",
-        "text": "歌单",
+        "text": "歌单分类",
         "url": "/pages/tags/tags"
       },
 
       {
         "id": 4,
         "path": "/images/index/4.png",
-        "text": "已购",
-        "url": ""
+        "text": "歌手mv",
+        "url": "/pages/singermv/singermv"
       },
     ],
     playList: [],

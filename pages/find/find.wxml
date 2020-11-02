@@ -1,33 +1,45 @@
 <view class="title">
-<view class="tleft">
-<text class="text1">发现好听的歌单 ></text>
-<text class="text2">em...,原来你也在这里呀...,好久不见！</text>
-</view>
-<view class="tright">
-<text class="text3">{{month}}</text>
-<text class="text4">{{date}}</text>
-</view>
+  <view class="tleft">
+    <text class="text1">发现好听的歌单 ></text>
+    <text class="text2">em...,原来你也在这里呀...,好久不见！</text>
+  </view>
+  <view class="tright">
+    <text class="text3">{{month}}</text>
+    <text class="text4">{{date}}</text>
+  </view>
 
 </view>
 <view class="show-info">
-<view class="left">
-  <navigator wx:for="{{Lplaylist}}" wx:key="id" url="/pages/playlist/playlist?id={{item.id}}">
-    <view class="images">
-      <view class="">
-      <image src="{{item.picUrl}}" mode="widthFix"></image>
+  <view class="left">
+    <navigator wx:for="{{Lplaylist}}" wx:key="id" url="/pages/playlist/playlist?id={{item.id}}">
+      <view class="images">
+        <view class="">
+          <image src="{{item.picUrl}}" mode="widthFix"></image>
+        </view>
+        <view class="text">
+          <text>{{item.name}}</text>
+        </view>
+        <view class="count">
+          <image src="/images/play/sing.png"></image>
+          <text>{{item.playCount}}</text>
+        </view>
       </view>
-      <view class="text"><text>{{item.name}}</text></view>
-    </view>
-  </navigator>
-</view>
-<view class="right">
-  <navigator wx:for="{{Rplaylist}}" wx:key="id" url="{{}}">
-    <view class="images">
-      <view class="">
-      <image src="{{item.picUrl}}" mode="widthFix"></image>
+    </navigator>
+  </view>
+  <view class="right">
+    <navigator wx:for="{{Rplaylist}}" wx:key="id" url="{{}}">
+      <view class="images">
+        <view class="">
+          <image src="{{item.picUrl}}" mode="widthFix"></image>
+        </view>
+        <view class="text">
+          <text>{{item.name}}</text>
+        </view>
+        <view class="count">
+          <image src="/images/play/sing.png"></image>
+          <text>{{item.playCount}}</text>
+        </view>
       </view>
-      <view class="text"><text>{{item.name}}</text></view>
-    </view>
-  </navigator>
-</view>
+    </navigator>
+  </view>
 </view>

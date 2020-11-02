@@ -11,7 +11,11 @@
     "pages/singerSongs/singerSongs",
     "pages/tags/tags",
     "pages/tops/tops",
-    "pages/djprogram/djprogram"
+    "pages/djprogram/djprogram",
+    "pages/mvlist/mvlist",
+    "pages/singerhotsong/singerhotsong",
+    "pages/singermv/singermv",
+    "pages/singermvlist/singermvlist"
   ],
   "window":{
     "backgroundColor": "#F6F6F6",
@@ -40,8 +44,8 @@
         "selectedIconPath": "images/icons/finded.png"
       },
       {
-        "pagePath": "pages/my/my",
-        "text": "我的",
+        "pagePath": "pages/singers/singers",
+        "text": "歌手",
         "iconPath": "images/icons/my.png",
         "selectedIconPath": "images/icons/myed.png"
       }

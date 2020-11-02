@@ -19,7 +19,7 @@ Page({
     duration: 0,
     currentTime: 0,
     play: false,
-    limit:10,
+    limit:12,
     offset:0,
     total:''
   },
@@ -58,12 +58,12 @@ Page({
     this.setData({
       total:data.total
     })
-    for (var i = 0; i < data.songs.length; i++) {
-      var data2 = await request({
-        url: "/song/url?id=" + data.songs[i].id
-      });
-      data.songs[i].src = data2.data[0].url
-    }
+    // for (var i = 0; i < data.songs.length; i++) {
+    //   var data2 = await request({
+    //     url: "/song/url?id=" + data.songs[i].id
+    //   });
+    //   data.songs[i].src = data2.data[0].url
+    // }
    
     for (var i = 0; i < data.songs.length; i++) {
       var data3 = await request({
@@ -75,16 +75,20 @@ Page({
       songlist: [...this.data.songlist, ...data.songs]
     })
     this.setData({
-      poster: this.data.songlist[0].al.picUrl,
-      name: this.data.songlist[0].name,
-      author: this.data.songlist[0].ar[0].name,
-      src: this.data.songlist[0].src
+      poster: this.data.songlist[this.data.index1].al.picUrl,
+      name: this.data.songlist[this.data.index1].name,
+      author: this.data.songlist[this.data.index1].ar[0].name,
+      src: this.data.songlist[this.data.index1].src
     })
   },
-  play(e) {
+  async play(e) {
     this.setData({
       index1: e.currentTarget.dataset.index
     })
+    var data2 = await request({
+      url: "/song/url?id=" + this.data.songlist[this.data.index1].id
+    });
+    this.data.songlist[this.data.index1].src = data2.data[0].url
     this.setData({
       poster: this.data.songlist[this.data.index1].al.picUrl,
       name: this.data.songlist[this.data.index1].name,
@@ -124,14 +128,24 @@ Page({
       play: false
     })
   },
-  clickplay() {
+  async clickplay(e) {
+    this.setData({
+      index1: this.data.index1
+    })
+    var data2 = await request({
+      url: "/song/url?id=" + this.data.songlist[this.data.index1].id
+    });
+    this.data.songlist[this.data.index1].src = data2.data[0].url
+    this.setData({
+      src: this.data.songlist[this.data.index1].src
+    })
     if (this.data.play) {
       this.audioCtx.pause()
     } else {
       this.audioCtx.play()
     }
   },
-  previous() {
+  async previous() {
     if (this.data.index1 === 0) {
       this.setData({
         index1: this.data.songlist.length - 1
@@ -141,7 +155,10 @@ Page({
         index1: this.data.index1 - 1
       })
     }
-
+    var data2 = await request({
+      url: "/song/url?id=" + this.data.songlist[this.data.index1].id
+    });
+    this.data.songlist[this.data.index1].src = data2.data[0].url
     this.setData({
       poster: this.data.songlist[this.data.index1].al.picUrl,
       name: this.data.songlist[this.data.index1].name,
@@ -150,7 +167,7 @@ Page({
     })
     this.audioCtx.play()
   },
-  next() {
+  async next() {
     if (this.data.index1 === this.data.songlist.length - 1) {
       this.setData({
         index1: 0
@@ -160,6 +177,10 @@ Page({
         index1: this.data.index1 + 1
       })
     }
+    var data2 = await request({
+      url: "/song/url?id=" + this.data.songlist[this.data.index1].id
+    });
+    this.data.songlist[this.data.index1].src = data2.data[0].url
     this.setData({
       poster: this.data.songlist[this.data.index1].al.picUrl,
       name: this.data.songlist[this.data.index1].name,
@@ -204,7 +225,7 @@ Page({
       wx.showToast({ title: '没有下一页数据' });
     }else{
       this.setData({
-        offset: this.data.offset + 10
+        offset: this.data.offset + 8
       })
       this.getsonglist(this.data.id);
     }

@@ -63,15 +63,15 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/albums/albums",
-					"pathName": "pages/albums/albums",
+					"name": "pages/find/find",
+					"pathName": "pages/find/find",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/playlist/playlist",
-					"pathName": "pages/playlist/playlist",
+					"id": 1,
+					"name": "pages/mvlist/mvlist",
+					"pathName": "pages/mvlist/mvlist",
 					"query": "",
 					"scene": null
 				}

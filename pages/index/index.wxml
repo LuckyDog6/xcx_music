@@ -86,7 +86,7 @@
     <text>找到你的专属阵地</text>
   </view>
   <view class="ufoindex">
-    <navigator wx:for="{{ufolist}}" wx:key="id">
+    <navigator wx:for="{{ufolist}}" wx:key="id" url="/pages/mvlist/mvlist?id={{item.id}}">
       <view class="ufo">
         <image src="{{item.sPicUrl}}"></image>
         <text>{{item.name}}</text>

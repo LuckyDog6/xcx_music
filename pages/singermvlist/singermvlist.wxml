@@ -1,0 +1,36 @@
+<view class="top" style="position:fixed; top:0;width: 750rpx;">
+  <view class="video">
+    <video id="myVideo" src="{{src}}" controls poster="{{mv.imgurl}}"></video>
+    <view class="item">
+      <text class="left">{{mv.name}}</text>
+      <view class="right">
+        <image src="{{mv.imgurl}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="item2">
+    <view class="artist">
+      <image src="{{img}}"></image>
+      <text class="">{{mv.artistName}}</text>
+    </view>
+    <view class="play">
+      <view>
+        <image src="/images/play/play.png"></image>
+      </view>
+      <view class="count">{{mv.playCount}}</view>
+    </view>
+  </view>
+</view>
+<view class="list">
+  <scroll-view class="main-scroll" scroll-y style="height: 100%">
+
+    <view wx:for="{{mvlist}}" wx:key="id" bindtap="click" data-index="{{index}}">
+      <view class="ite">
+        <view>
+          <image src="{{item.imgurl}}" class="iii"></image>
+        </view>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

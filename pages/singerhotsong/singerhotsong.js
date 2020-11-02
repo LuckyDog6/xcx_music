@@ -1,7 +1,4 @@
-import {
-  request
-} from "../../request/index.js";
-// 小程序不支持ES7语法async 需要引入外部文件
+import { request } from "../../request/index.js";
 import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
 
@@ -9,9 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    album:{},
-    desc:'',
-    songlist:[],
+    id: '',
+    songlist: [],
+    singername: '',
+    desc: '',
+    artImg: '',
     index1: 0,
     poster: '',
     name: '',
@@ -27,44 +26,46 @@ Page({
    */
   onLoad: function (options) {
     var id = options.id || "";
+    var singername = options.name || "";
+    this.setData({
+      singername,
+      id
+    })
+    this.getsinger(id)
     this.getsonglist(id)
   },
-  async getsonglist(id){
-    var data = await request({
-      url: "/playlist/detail?id="+id
-    });
-    this.data.album.blurPicUrl = data.playlist.creator.backgroundUrl
-    this.data.album.name = data.playlist.creator.name
-    this.data.album.subType = data.playlist.creator.signature.slice(0,20)
-    this.data.album.artist = data.playlist.creator.nickname
+  async getsinger(id) {
+    const res = await request({ url: '/artist/desc?id=' + id })
+
     this.setData({
-      album: this.data.album,
-      desc: data.playlist.description.slice(0,25),
-      artImg: data.playlist.creator.avatarUrl
+      desc: res.briefDesc.slice(0, 70)
     })
-    var list = data.playlist.trackIds
-    
-    var num = Math.floor(Math.random() * (list.length-11))
-    list=list.slice(num,num+10)
-    var songlist=[]
-    for(var i=0;i<list.length;i++){
-      var data2 = await request({
-        url: "/song/detail?ids="+list[i].id
-      });
-      songlist.push(data2.songs[0])
+    if (res.topicData !== null) {
       this.setData({
-        songlist:songlist
+        artImg: res.topicData[0].coverUrl
+      })
+    } else {
+      this.setData({
+        artImg: "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg"
       })
     }
-    for (var i = 0; i < this.data.songlist.length; i++) {
-      var data2 = await request({
-        url: "/song/url?id=" + this.data.songlist[i].id
+  },
+  async getsonglist(id) {
+    const data = await request({ url: "/artist/top/song?id=" + id});
+    // for (var i = 0; i < data.songs.length; i++) {
+    //   var data2 = await request({
+    //     url: "/song/url?id=" + data.songs[i].id
+    //   });
+    //   data.songs[i].src = data2.data[0].url
+    // }
+    for (var i = 0; i < data.songs.length; i++) {
+      var data3 = await request({
+        url: "/song/detail?ids=" + data.songs[i].id
       });
-      this.data.songlist[i].src = data2.data[0].url
+      data.songs[i].al.picUrl = data3.songs[0].al.picUrl
     }
     this.setData({
-      songlist:this.data.songlist,
-      scrollTop:0
+      songlist:data.songs
     })
     this.setData({
       poster: this.data.songlist[0].al.picUrl,
@@ -73,10 +74,14 @@ Page({
       src: this.data.songlist[0].src
     })
   },
-  play(e) {
+  async play(e) {
     this.setData({
       index1: e.currentTarget.dataset.index
     })
+    var data2 = await request({
+      url: "/song/url?id=" + this.data.songlist[this.data.index1].id
+    });
+    this.data.songlist[this.data.index1].src = data2.data[0].url
     this.setData({
       poster: this.data.songlist[this.data.index1].al.picUrl,
       name: this.data.songlist[this.data.index1].name,
@@ -84,9 +89,6 @@ Page({
       src: this.data.songlist[this.data.index1].src
     })
     this.audioCtx.play()
-    // this.setData({
-    //   play:true
-    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -119,14 +121,24 @@ Page({
       play: false
     })
   },
-  clickplay() {
+  async clickplay(e) {
+    this.setData({
+      index1: this.data.index1 
+    })
+    var data2 = await request({
+      url: "/song/url?id=" + this.data.songlist[this.data.index1].id
+    });
+    this.data.songlist[this.data.index1].src = data2.data[0].url
+    this.setData({
+      src: this.data.songlist[this.data.index1].src
+    })
     if (this.data.play) {
       this.audioCtx.pause()
     } else {
       this.audioCtx.play()
     }
   },
-  previous() {
+  async previous() {
     if (this.data.index1 === 0) {
       this.setData({
         index1: this.data.songlist.length - 1
@@ -136,7 +148,10 @@ Page({
         index1: this.data.index1 - 1
       })
     }
-
+    var data2 = await request({
+      url: "/song/url?id=" + this.data.songlist[this.data.index1].id
+    });
+    this.data.songlist[this.data.index1].src = data2.data[0].url
     this.setData({
       poster: this.data.songlist[this.data.index1].al.picUrl,
       name: this.data.songlist[this.data.index1].name,
@@ -145,7 +160,7 @@ Page({
     })
     this.audioCtx.play()
   },
-  next() {
+  async next() {
     if (this.data.index1 === this.data.songlist.length - 1) {
       this.setData({
         index1: 0
@@ -155,6 +170,10 @@ Page({
         index1: this.data.index1 + 1
       })
     }
+    var data2 = await request({
+      url: "/song/url?id=" + this.data.songlist[this.data.index1].id
+    });
+    this.data.songlist[this.data.index1].src = data2.data[0].url
     this.setData({
       poster: this.data.songlist[this.data.index1].al.picUrl,
       name: this.data.songlist[this.data.index1].name,

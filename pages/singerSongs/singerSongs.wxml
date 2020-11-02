@@ -11,33 +11,33 @@
       </view>
     </view>
   </view>
-  <view class="songlist">
-    <view class="list" wx:for="{{songlist}}" wx:key="id" data-index="{{index}}" bindtap="play">
-      <view class="index">
-        <text>{{index+1}}</text>
-      </view>
-      <view class="son">
-        <text class="songname">{{item.name}}</text>
-        <view class="aut">
-          <text class="dujia">独家</text>
-          <text class="au">{{item.ar[0].name}}-{{item.al.name}}</text>
+    <view class="songlist">
+      <view class="list" wx:for="{{songlist}}" wx:key="id" data-index="{{index}}" bindtap="play">
+        <view class="index">
+          <text>{{index+1}}</text>
+        </view>
+        <view class="son">
+          <text class="songname">{{item.name}}</text>
+          <view class="aut">
+            <text class="dujia">独家</text>
+            <text class="au">{{item.ar[0].name}}-{{item.al.name}}</text>
+          </view>
+        </view>
+        <view class="bof">
+          <text></text>
+          <image src="{{index===index1 ? '/images/play/laba.png':'/images/play/bofang.png'}}"></image>
         </view>
       </view>
-      <view class="bof">
-      <text></text>
-        <image src="{{index===index1 ? '/images/play/laba.png':'/images/play/bofang.png'}}"></image>
-      </view>
     </view>
-  </view>
 </view>
 <view class="audio">
   <slider max="{{duration}}" block-size="12" value="{{currentTime}}" bindchange="change" selected-color="red"></slider>
   <audio id="myAudio" poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" controls loop bindtimeupdate='bindtimeupdate' bindplay="audioplay" bindpause="audiopause">
-  <view class="lrb">
-  <cover-image src="/images/play/left.png" class="left" bindtap="previous"></cover-image>
-    <cover-image src="{{play ? '/images/play/bof.png':'/images/play/bofang.png'}}" class="cen" bindtap="clickplay"></cover-image>
-    <cover-image src="/images/play/right.png" class="right" bindtap="next"></cover-image>
-  </view>
-    
+    <view class="lrb">
+      <cover-image src="/images/play/left.png" class="left" bindtap="previous"></cover-image>
+      <cover-image src="{{play ? '/images/play/bof.png':'/images/play/bofang.png'}}" class="cen" bindtap="clickplay" data-index="{{index1}}"></cover-image>
+      <cover-image src="/images/play/right.png" class="right" bindtap="next"></cover-image>
+    </view>
   </audio>
+
 </view>

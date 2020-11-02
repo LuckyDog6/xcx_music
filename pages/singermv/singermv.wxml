@@ -22,7 +22,7 @@
           <navigator
           wx:for="{{rightContent}}"
           wx:key="id"
-          url="/pages/singerhotsong/singerhotsong?id={{item.id}}&name={{item.name}}"
+          url="/pages/singermvlist/singermvlist?id={{item.id}}"
           >
           <image src="{{item.picUrl}}"></image>
           <view class="singers_name">{{item.name}}</view>
