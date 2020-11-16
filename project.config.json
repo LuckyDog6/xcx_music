@@ -13,16 +13,16 @@
 		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
-		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"scopeDataCheck": false,
+		"compileHotReLoad": false,
 		"useIsolateContext": true,
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false,
@@ -30,7 +30,8 @@
 		"packNpmRelationList": [],
 		"minifyWXSS": true,
 		"useMultiFrameRuntime": false,
-		"useApiHook": true
+		"useApiHook": true,
+		"bundle": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.13.2",
@@ -73,6 +74,89 @@
 					"name": "pages/mvlist/mvlist",
 					"pathName": "pages/mvlist/mvlist",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/setting/setting",
+					"pathName": "pages/setting/setting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/playlist/playlist",
+					"pathName": "pages/playlist/playlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mylove/mylove",
+					"pathName": "pages/mylove/mylove",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/favPlaylist/favPlaylist",
+					"pathName": "pages/favPlaylist/favPlaylist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/favalbum/favalbum",
+					"pathName": "pages/favalbum/favalbum",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/singers/singers",
+					"pathName": "pages/singers/singers",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mysinger/mysinger",
+					"pathName": "pages/mysinger/mysinger",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recentlyPlay/recentlyPlay",
+					"pathName": "pages/recentlyPlay/recentlyPlay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
 					"scene": null
 				}
 			]

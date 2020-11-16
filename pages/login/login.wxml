@@ -1,0 +1,60 @@
+<view class="container" hidden="{{main}}">
+  <view class="top">
+    <image src="/images/login/wyiyun.png"></image>
+  </view>
+  <view class="center">
+    <button class="login" bindtap="gologin">登录</button>
+    <button class="register" bindtap="goregister">去注册</button>
+  </view>
+  <view class="bottom">
+    <image src="/images/login/wechat.png"></image>
+    <image src="/images/login/qq.png"></image>
+    <image src="/images/login/weibo.png"></image>
+    <image src="/images/login/yi.png"></image>
+  </view>
+  <view class="note">
+    <view>
+      <image src="/images/login/agree.png"></image>
+      <text>同意《用户协议》 《隐私政策》 《儿童隐私政策》 《中国联通认证服务协议》</text>
+    </view>
+  </view>
+</view>
+<view class="gologin" hidden="{{gologin}}">
+  <view class="top">
+    <image src="/images/login/wyiyun.png"></image>
+  </view>
+  <view class="center">
+    <view class="user">
+      <image src="/images/login/username.png"></image>
+      <input placeholder="请输入手机号或邮箱号" value="{{username}}" bindinput="getUsername"></input>
+    </view>
+    <view class="user">
+      <image src="/images/login/paword.png"></image>
+      <input placeholder="请输入密码" value="{{password}}" bindinput="getPassword" password></input>
+    </view>
+  </view>
+  <view class="btn">
+    <button class="login" bindtap="login">登录</button>
+    <button class="return" bindtap="return1">返回</button>
+  </view>
+</view>
+<view class="goregister" hidden="{{goregister}}">
+  <view class="top">
+    <image src="/images/login/wyiyun.png"></image>
+  </view>
+  <view class="center">
+    <view class="user">
+      <image src="/images/login/username.png"></image>
+      <input placeholder="请输入手机号或邮箱号" value="{{username}}" bindinput="getUsername"></input>
+    </view>
+    <view class="user">
+      <image src="/images/login/paword.png"></image>
+      <input placeholder="请输入密码" value="{{password}}" bindinput="getPassword" password></input>
+    </view>
+
+  </view>
+  <view class="btn">
+    <button class="ok" bindtap="register">注册</button>
+    <button class="return" bindtap="return1">返回</button>
+  </view>
+</view>

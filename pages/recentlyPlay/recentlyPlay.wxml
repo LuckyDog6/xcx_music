@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="desc">
+    <image src="http://8.129.165.149/music/{{user.image}}"></image>
+    <view class="right">
+      <view class="title">
+        <text class="">{{user.name}}</text>
+        <!-- <text class="">{{user.subType}}</text> -->
+      </view>
+      <view class="author">
+        <image src="http://8.129.165.149/music/{{user.image}}"></image>
+        <text>{{user.nickname}}</text>
+        <text class="it">></text>
+      </view>
+      <view class="descd">
+        <text>{{user.desc}}...</text>
+        <text class="it2">></text>
+      </view>
+    </view>
+  </view>
+  <view class="songlist">
+    <view class="list" wx:for="{{recentlyList}}" wx:key="id" data-index="{{index}}" bindtap="play">
+      <view class="index">
+        <text>{{index+1}}</text>
+      </view>
+      <view class="son">
+        <text class="songname">{{item.name}}</text>
+        <view class="aut">
+          <text class="dujia">独家</text>
+          <text class="au">{{item.singer}}-{{item.album}}</text>
+        </view>
+      </view>
+      <view class="bof">
+      <text></text>
+        <image src="{{index===index1 ? '/images/play/laba.png':'/images/play/bofang.png'}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="audio">
+  <slider max="{{duration}}" block-size="12" value="{{currentTime}}" bindchange="change" selected-color="red"></slider>
+  <audio id="myAudio" poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" controls loop bindtimeupdate='bindtimeupdate' bindplay="audioplay" bindpause="audiopause">
+  <view class="lrb">
+  <image src="/images/play/left.png" class="left" bindtap="previous"></image>
+    <image src="{{play ? '/images/play/bof.png':'/images/play/bofang.png'}}" class="cen" bindtap="clickplay"></image>
+    <image src="/images/play/right.png" class="right" bindtap="next"></image>
+  </view>
+    
+  </audio>
+</view>
+

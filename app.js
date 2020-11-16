@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    username: '2221071726@qq.com',
+    bgplay:''
   }
 })

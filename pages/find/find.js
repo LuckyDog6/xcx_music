@@ -23,8 +23,6 @@ Page({
   onLoad: function (options) {
     this.getPlaylist()
     var date=new Date()
-    console.log(date.getMonth())
-    console.log(date.getDate())
     var mon=''
     if(date.getMonth()===0){
       mon='Jan.'
@@ -68,7 +66,6 @@ Page({
       month:mon,
       date:date.getDate()
     })
-    console.log
   },
   async getPlaylist(){
     var data = await request({

@@ -25,7 +25,7 @@ Page({
         "id": 2,
         "path": "/images/index/2.png",
         "text": "歌手热曲",
-        "url": "/pages/my/my"
+        "url": "/pages/singerhot/singerhot"
       },
 
       {

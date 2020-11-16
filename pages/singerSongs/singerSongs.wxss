@@ -24,10 +24,16 @@
 .right {
   width: 60%;
 }
-
+.title image{
+  width: 60rpx;
+  height: 60rpx
+}
 .title {
   margin: 20rpx 0rpx;
   color: rgb(250, 250, 250);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
 }
 
 .author {
@@ -151,7 +157,7 @@ slider {
   bottom: 0;
 }
 
-.lrb cover-image {
+.lrb image {
   width: 60rpx;
   height: 60rpx;
   margin-right: 30rpx;

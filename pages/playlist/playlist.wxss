@@ -144,13 +144,16 @@ slider{
 .lrb{
   z-index: 999;
   margin-left: 500rpx;
-  position: absolute ;
+  position: fixed ;
   left: 0;
   bottom: 0;
 }
-.lrb cover-image{
+.lrb image{
   width: 60rpx;
   height: 60rpx;
   margin-right: 30rpx;
   margin-bottom: 30rpx
+}
+.favorite{
+  margin-left: 50rpx !important
 }

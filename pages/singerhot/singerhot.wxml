@@ -1,0 +1,34 @@
+<view class="cates">
+  <SearchInput></SearchInput>
+  <view class="cates_container">
+    <!-- 左侧菜单 -->
+    <scroll-view scroll-y class="left_menu">
+      <view
+      class="{{index===currentIndex?'active':'menu_item '}}"
+      wx:for="{{leftMenuList}}"
+      wx:key="*this"
+      bindtap="handleItemTap"
+      data-index="{{index}}"
+      data-type="{{item.type}}"
+      data-area="{{item.area}}"
+      >
+      {{item.name}}
+      </view>
+    </scroll-view>
+    <!-- 右侧商品内容 -->
+    <scroll-view scroll-top="{{scrollTop}}" scroll-y class="right_content">
+      <view class="singers_group">
+        <view class="singers_list">
+          <navigator
+          wx:for="{{rightContent}}"
+          wx:key="id"
+          url="/pages/singerhotsong/singerhotsong?id={{item.id}}&name={{item.name}}"
+          >
+          <image src="{{item.picUrl}}"></image>
+          <view class="singers_name">{{item.name}}</view>
+          </navigator>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

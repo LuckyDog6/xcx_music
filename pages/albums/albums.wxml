@@ -10,6 +10,8 @@
         <image src="{{artImg}}"></image>
         <text>{{album.artist.name}}</text>
         <text class="it">></text>
+        <image src="/images/play/favorite.png" class="favorite" bindtap="favorited" hidden="{{favorite!==-1}}"></image>
+        <image src="/images/play/favorited.png" class="favorite" bindtap="favorite" hidden="{{favorite===-1}}"></image>
       </view>
       <view class="descd">
         <text>{{desc}}...</text>
@@ -40,9 +42,11 @@
   <slider max="{{duration}}" block-size="12" value="{{currentTime}}" bindchange="change" selected-color="red"></slider>
   <audio id="myAudio" poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" controls loop bindtimeupdate='bindtimeupdate' bindplay="audioplay" bindpause="audiopause">
   <view class="lrb">
-  <cover-image src="/images/play/left.png" class="left" bindtap="previous"></cover-image>
-    <cover-image src="{{play ? '/images/play/bof.png':'/images/play/bofang.png'}}" class="cen" bindtap="clickplay"></cover-image>
-    <cover-image src="/images/play/right.png" class="right" bindtap="next"></cover-image>
+  <image class="love" src="/images/play/love.png" bindtap="loved" data-index="{{index1}}" hidden="{{hidden!==-1}}"></image>
+  <image class="love" src="/images/play/loved.png" bindtap="love" data-index="{{index1}}" hidden="{{hidden===-1}}"></image>
+  <image src="/images/play/left.png" class="left" bindtap="previous"></image>
+    <image src="{{play ? '/images/play/bof.png':'/images/play/bofang.png'}}" class="cen" bindtap="clickplay"></image>
+    <image src="/images/play/right.png" class="right" bindtap="next"></image>
   </view>
     
   </audio>

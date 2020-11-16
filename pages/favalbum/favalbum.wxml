@@ -1,0 +1,31 @@
+<view class="title">
+  <view class="tleft">
+    <text class="text1">我收藏的专辑</text>
+    <text class="text2">此曲只应天上有，人间难得几回闻！</text>
+  </view>
+  <view class="tright">
+    <text class="text3">{{month}}</text>
+    <text class="text4">{{date}}</text>
+  </view>
+
+</view>
+<view class="show-info">
+  <view class="left">
+    <navigator wx:for="{{albumslist}}" wx:key="id" url="/pages/albums/albums?id={{item.id}}">
+      <view class="images">
+        <view class="">
+          <image src="{{item.picUrl}}" mode="widthFix"></image>
+        </view>
+        <view class="text">
+          <text>{{item.name}}</text>
+          <text class="album">{{item.album}}</text>
+        </view>
+        <view class="count">
+          
+          <image src="/images/play/sing.png"></image>
+          <text>{{item.shareCount}}</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

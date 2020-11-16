@@ -1,0 +1,159 @@
+.container{
+  background-color: #DC143C;
+  width: 750rpx;
+  height: 100vh;
+}
+.top image{
+  width: 150rpx;
+  height: 150rpx;
+  margin-top: 150rpx;
+  margin-left: 300rpx;
+}
+.center{
+  display: flex;
+  flex-direction: column;
+  /* align-content: center;
+  align-items: center; */
+  margin-top: 300rpx
+}
+.login{
+  background-color: rgb(250, 250, 250);
+  width: 500rpx;
+  height: 80rpx;
+  color: #DC143C;
+  font-size: 14px;
+  border-radius: 50rpx;
+  margin-bottom: 50rpx
+}
+.register{
+  background-color:#DC143C;
+  width: 500rpx;
+  height: 80rpx;
+  color: rgb(250, 250, 250);
+  font-size: 14px;
+  border-radius: 50rpx;
+  border: 2rpx solid rgb(228, 227, 227)
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  margin-left: 175rpx
+}
+.bottom image{
+  width: 60rpx;
+  height: 60rpx;
+  margin: 20rpx
+}
+.note{
+  width: 500rpx;
+  font-size: 8px;
+  margin-left:125rpx;
+  color: rgb(250, 250, 250); 
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center
+}
+.note image{
+  width: 25rpx;
+  height: 25rpx;
+  margin-right: 5rpx
+}
+.gologin{
+  background-color: #DC143C;
+  width: 750rpx;
+  height: 100vh;
+}
+.gologin .center{
+  margin-left: 60rpx;
+  margin-top: 150rpx
+}
+.user{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center
+}
+.user image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx
+}
+.gologin .center input{
+  width: 500rpx;
+  height: 80rpx;
+  background-color: rgb(250, 250, 250);
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+  font-size: 12px;
+}
+.gologin .btn{
+  display: flex;
+  flex-direction: row;
+  width: 500rpx;
+  margin-left: 120rpx;
+  justify-content: space-between
+}
+.btn .login{
+  background-color: rgb(250, 250, 250);
+  width: 230rpx;
+  height: 80rpx;
+  color: #DC143C;
+  font-size: 14px;
+  border-radius: 50rpx;
+  margin-bottom: 50rpx;
+  margin-right: 40rpx
+}
+.btn .return{
+  background-color:#DC143C;
+  width: 230rpx;
+  height: 80rpx;
+  color: rgb(250, 250, 250);
+  font-size: 14px;
+  border-radius: 50rpx;
+  border: 2rpx solid rgb(228, 227, 227);
+  margin-right: 0rpx
+}
+.goregister{
+  background-color: #DC143C;
+  width: 750rpx;
+  height: 100vh;
+}
+.goregister .center{
+  margin-left: 60rpx;
+  margin-top: 150rpx
+}
+.goregister .center input{
+  width: 500rpx;
+  height: 80rpx;
+  background-color: rgb(250, 250, 250);
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+  font-size: 12px;
+  align-content: center
+}
+.goregister .btn{
+  display: flex;
+  flex-direction: row;
+  width: 500rpx;
+  margin-left: 120rpx
+}
+.btn .ok{
+  background-color: rgb(250, 250, 250);
+  width: 230rpx;
+  height: 80rpx;
+  color: #DC143C;
+  font-size: 14px;
+  border-radius: 50rpx;
+  margin-bottom: 50rpx
+}
+.btn .return{
+  background-color:#DC143C;
+  width: 230rpx;
+  height: 80rpx;
+  color: rgb(250, 250, 250);
+  font-size: 14px;
+  border-radius: 50rpx;
+  border: 2rpx solid rgb(228, 227, 227)
+}

@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/login/login",
     "pages/find/find",
-    "pages/my/my",
     "pages/albums/albums",
     "pages/playlist/playlist",
     "pages/play/play",
@@ -15,8 +15,18 @@
     "pages/mvlist/mvlist",
     "pages/singerhotsong/singerhotsong",
     "pages/singermv/singermv",
-    "pages/singermvlist/singermvlist"
+    "pages/singermvlist/singermvlist",
+    "pages/my/my",
+    "pages/setting/setting",
+    "pages/mylove/mylove",
+    "pages/favPlaylist/favPlaylist",
+    "pages/mysinger/mysinger",
+    "pages/recentlyPlay/recentlyPlay",
+    "pages/favalbum/favalbum",
+    "pages/test/test"
+    
   ],
+  "requiredBackgroundModes":["audio"],
   "window":{
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle":"light",
@@ -46,6 +56,12 @@
       {
         "pagePath": "pages/singers/singers",
         "text": "歌手",
+        "iconPath": "images/icons/singer.png",
+        "selectedIconPath": "images/icons/singered.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
         "iconPath": "images/icons/my.png",
         "selectedIconPath": "images/icons/myed.png"
       }

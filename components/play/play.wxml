@@ -1,0 +1,3 @@
+<view class="play">
+<image src="{{img}}"></image>
+</view>

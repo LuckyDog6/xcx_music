@@ -1,0 +1,25 @@
+.avatar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 750rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid rgb(202, 196, 196)
+}
+.avatar image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 98rpx;
+  margin: 10rpx 30rpx
+}
+.avatar text{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+  margin-right: 30rpx;
+}
+.avatar text:nth-last-child(1){
+  color: rgb(173, 167, 167);
+  font-size: 14px
+}

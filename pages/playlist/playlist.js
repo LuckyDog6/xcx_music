@@ -1,8 +1,12 @@
 import {
   request
 } from "../../request/index.js";
+import {
+  request2
+} from "../../request/index2.js";
 // 小程序不支持ES7语法async 需要引入外部文件
 import regeneratorRuntime from '../../lib/runtime/runtime';
+const app=getApp()
 Page({
 
   /**
@@ -19,7 +23,11 @@ Page({
     src: '',
     duration: 0,
     currentTime: 0,
-    play: false
+    play: false,
+    favorite:-1,
+    id:'',
+    playlist:[],
+    username:''
   },
 
   /**
@@ -28,6 +36,21 @@ Page({
   onLoad: function (options) {
     var id = options.id || "";
     this.getsonglist(id)
+    this.getPlaylist()
+    this.setData({
+      username:app.globalData.username,
+      id:id
+    })
+    console.log(this.data.id)
+  },
+  async getPlaylist(){
+    var res = await request2({ url:'/playList/findAllId'})
+    this.setData({
+      playlist:res.data
+    })
+    this.setData({
+      favorite:this.data.playlist.indexOf(this.data.id.toString())
+    })
   },
   async getsonglist(id){
     var data = await request({
@@ -37,6 +60,11 @@ Page({
     this.data.album.name = data.playlist.creator.name
     this.data.album.subType = data.playlist.creator.signature.slice(0,20)
     this.data.album.artist = data.playlist.creator.nickname
+    if (data.playlist.description===null){
+      data.playlist.description="没有任何描述"
+    }else{
+      data.playlist.description = data.playlist.description
+    }
     this.setData({
       album: this.data.album,
       desc: data.playlist.description.slice(0,25),
@@ -162,6 +190,42 @@ Page({
       src: this.data.songlist[this.data.index1].src
     })
     this.audioCtx.play()
+  },
+  async favorited(e) {
+    var that = this
+    var res = await request2({ url: '/playList/add?id=' + this.data.id + '&username=' + this.data.username })
+    if (res.status === 1) {
+      wx.showToast({
+        title: '已收藏',
+      })
+      setTimeout(function () {
+        that.setData({
+          favorite: -2
+        })
+      }, 500) //延迟时间
+    } else {
+      wx.showToast({
+        title: '',
+      })
+    }
+  },
+  async favorite(e) {
+    var that = this
+    var res = await request2({ url: '/playList/delete?id=' + this.data.id + '&username=' + this.data.username })
+    if (res.status === 1) {
+      wx.showToast({
+        title: '已从收藏列表移除',
+      })
+      setTimeout(function () {
+        that.setData({
+          favorite: -1
+        })
+      }, 500) //延迟时间
+    } else {
+      wx.showToast({
+        title: '',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面显示

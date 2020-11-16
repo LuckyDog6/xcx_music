@@ -1,5 +1,7 @@
 import { request } from "../../request/index.js";
+import { request2 } from "../../request/index2.js";
 import regeneratorRuntime from '../../lib/runtime/runtime';
+const app=getApp()
 Page({
 
   /**
@@ -21,7 +23,11 @@ Page({
     play: false,
     limit:12,
     offset:0,
-    total:''
+    total:'',
+    favorite: -1,
+    id: '',
+    playlist: [],
+    username: ''
   },
 
   /**
@@ -30,12 +36,26 @@ Page({
   onLoad: function (options) {
     var id = options.id || "";
     var singername = options.name || "";
+    this.getPlaylist()
+    this.setData({
+      username: app.globalData.username,
+      id: id
+    })
     this.setData({
       singername,
       id
     })
     this.getsinger(id)
     this.getsonglist(id)
+  },
+  async getPlaylist() {
+    var res = await request2({ url: '/mysinger/findAllId' })
+    this.setData({
+      playlist: res.data
+    })
+    this.setData({
+      favorite: this.data.playlist.indexOf(this.data.id.toString())
+    })
   },
   async getsinger(id){
     const res = await request({ url:'/artist/desc?id='+id})
@@ -188,6 +208,42 @@ Page({
       src: this.data.songlist[this.data.index1].src
     })
     this.audioCtx.play()
+  },
+  async favorited(e) {
+    var that = this
+    var res = await request2({ url: '/mysinger/add?id=' + this.data.id + '&username=' + this.data.username + '&name=' + this.data.singername + '&src=' + this.data.artImg })
+    if (res.status === 1) {
+      wx.showToast({
+        title: '已收藏',
+      })
+      setTimeout(function () {
+        that.setData({
+          favorite: -2
+        })
+      }, 500) //延迟时间
+    } else {
+      wx.showToast({
+        title: '',
+      })
+    }
+  },
+  async favorite(e) {
+    var that = this
+    var res = await request2({ url: '/mysinger/delete?id=' + this.data.id + '&username=' + this.data.username })
+    if (res.status === 1) {
+      wx.showToast({
+        title: '已从收藏列表移除',
+      })
+      setTimeout(function () {
+        that.setData({
+          favorite: -1
+        })
+      }, 500) //延迟时间
+    } else {
+      wx.showToast({
+        title: '',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面显示

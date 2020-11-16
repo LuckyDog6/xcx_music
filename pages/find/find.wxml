@@ -27,7 +27,7 @@
     </navigator>
   </view>
   <view class="right">
-    <navigator wx:for="{{Rplaylist}}" wx:key="id" url="{{}}">
+    <navigator wx:for="{{Rplaylist}}" wx:key="id" url="/pages/playlist/playlist?id={{item.id}}">
       <view class="images">
         <view class="">
           <image src="{{item.picUrl}}" mode="widthFix"></image>

@@ -1,0 +1,59 @@
+<view class="avatar" bindtap="image">
+  <text>头像</text>
+  <image src='http://8.129.165.149/music/{{user.image}}' hidden="{{user.image===null}}"></image>
+  <image src='/images/my/avator.png'  hidden="{{user.image!==null}}"></image>
+</view>
+<view class="avatar">
+  <text>账号</text>
+  <text>{{user.username}}</text>
+</view>
+<view class="avatar"  bindtap="passw">
+  <text>密码</text>
+  <text>{{user.password}}</text>
+</view>
+<modal hidden="{{passwd}}" title="修改密码" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+    <input type='text' placeholder="请输入内容" value="{{user.password}}" auto-focus bindinput="passwd"/>
+  </modal>
+<view class="avatar" bindtap="nickname">
+  <text>昵称</text>
+  <text>{{user.nickname===null?"未设置":user.nickname}}</text>
+</view>
+  <modal hidden="{{nick}}" title="修改昵称" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+    <input type='text' placeholder="请输入内容" value="{{user.nickname}}" auto-focus bindinput="nickn"/>
+  </modal>
+<view class="avatar" bindtap="nam">
+  <text>姓名</text>
+  <text>{{user.name===null?"未设置":user.name}}</text>
+</view>
+  <modal hidden="{{name}}" title="修改姓名" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+    <input type='text' placeholder="请输入内容" value="{{user.name}}" auto-focus bindinput="name"/>
+  </modal>
+<view class="avatar" bindtap="se">
+  <text>性别</text>
+  <text>{{user.sex===null?"未设置":user.sex}}</text>
+</view>
+<modal hidden="{{sex}}" title="修改性别" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+<radio-group bindchange="radioChange">
+      <radio value="男" checked="{{user.sex==='男'}}"/>男
+      <radio value="女" checked="{{user.sex==='女'}}"/>女
+  </radio-group>
+  </modal>
+<picker mode="date" bindchange='changeDate' value='{{}}'>
+  <view class="avatar">
+    <text>生日</text>
+    <text>{{user.birth===null?"未设置":user.birth}}</text>
+  </view>
+</picker>
+<picker mode="region" bindchange='changeZone' value='{{}}'>
+  <view class="avatar">
+    <text>地区</text>
+    <text>{{user.address===null?"未设置":user.address}}</text>
+  </view>
+</picker>
+<view class="avatar" bindtap="des">
+  <text>个性签名</text>
+  <text>{{user.desc===null?"未设置":user.desc}}</text>
+</view>
+<modal hidden="{{desc}}" title="修改签名(15字内)" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+    <input type='text' maxlength="15" placeholder="请输入内容" value="{{user.desc}}" auto-focus bindinput="desc"/>
+  </modal>

@@ -1,0 +1,8 @@
+.play{
+  position: fixed;
+  bottom: 0
+}
+.image{
+  width: 150rpx;
+  height: 150rpx
+}

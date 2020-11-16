@@ -1,0 +1,23 @@
+<view class="title">
+  <view class="tleft">
+    <text class="text1">我关注的歌手</text>
+    <text class="text2">山有木兮木有枝，心悦君兮君不知</text>
+  </view>
+  <view class="tright">
+    <text class="text3">{{month}}</text>
+    <text class="text4">{{date}}</text>
+  </view>
+</view>
+<view class="container">
+  <navigator wx:for="{{singerslist}}" wx:key="id" class="singer" url="/pages/singerSongs/singerSongs?id={{item.id}}&name={{item.name}}">
+  <view class="main">
+    <view class="image">
+      <image src="{{item.src}}"></image>
+    </view>
+    <view class="desc">
+      <text class="author">{{item.name}}</text>
+      <text class="des">{{item.desc}}...</text>
+    </view>
+</view>
+  </navigator>
+</view>
